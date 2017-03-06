@@ -1,6 +1,7 @@
 package edu.uark.uarkregisterapp;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -8,6 +9,10 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.EditText;
+
+import edu.uark.uarkregisterapp.models.transition.EmployeeTransition;
+
 
 public class content_register_screen extends AppCompatActivity {
 
@@ -15,6 +20,7 @@ public class content_register_screen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_content_register_screen);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -30,16 +36,27 @@ public class content_register_screen extends AppCompatActivity {
 
     public void startLoginButtonClick (View view) {
 
-        AlertDialog alertDialog = new AlertDialog.Builder(content_register_screen.this).create();
-        alertDialog.setTitle("Alert");
-        alertDialog.setMessage("Functionality not yet implemented");
-        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-        alertDialog.show();
+        /*EditText editText2 = (EditText) content_register_screen.findViewById(R.id.editText2);
+        public String user = editText2.getText().toString();
+
+        EditText editText = (EditText) content_register_screen.findViewById(R.id.editText);
+        String pass = editText.getText().toString();*/
+
+        //String user = userText.getText().toString();
+        //String pass = passText.getText().toString();
+
+        EditText text = (EditText)findViewById(R.id.userText);
+        String user = text.getText().toString();
+
+        EditText text2 = (EditText)findViewById(R.id.passText);
+        String pass = text2.getText().toString();
+
+        EmployeeTransition obj= new EmployeeTransition(user,pass);
+        Intent i=new Intent(this,HomeActivity.class);
+
+        i.putExtra("userTag",obj);
+
+        startActivity(i);
     }
 
 }

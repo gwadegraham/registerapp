@@ -12,7 +12,7 @@
     tools:context="edu.uark.uarkregisterapp.HomeActivity">
 
     <TextView
-        android:text="Welcome {name}! What would you like to do next?"
+        android:text= "welcomeStatement"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"

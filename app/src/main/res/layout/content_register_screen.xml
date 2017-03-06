@@ -21,24 +21,10 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="206dp"
-        android:id="@+id/editText"
+        android:id="@+id/passText"
         android:gravity="center"
         android:hint="Password"
         android:text="" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:hint="Employee ID"
-        android:ems="10"
-        android:layout_alignBottom="@+id/editText"
-        android:layout_alignRight="@+id/editText"
-        android:layout_alignEnd="@+id/editText"
-        android:layout_marginBottom="83dp"
-        android:id="@+id/editText2"
-        android:gravity="center"
-        />
 
     <TextView
         android:text="Welcome! Please log in!"
@@ -52,15 +38,27 @@
         android:textColor="#000"
         />
 
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="Employee ID"
+        android:ems="10"
+        android:id="@+id/userText"
+        android:gravity="center"
+        android:layout_marginTop="53dp"
+        android:layout_below="@+id/textView"
+        android:layout_alignLeft="@+id/passText"
+        android:layout_alignStart="@+id/passText"/>
+
     <Button
         android:text="Log In"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editText"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="75dp"
+        android:layout_marginTop="48dp"
         android:id="@+id/button"
         android:onClick="startLoginButtonClick"
-        />
+        android:layout_below="@+id/passText"
+        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>

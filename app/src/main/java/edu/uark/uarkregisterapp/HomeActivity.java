@@ -5,8 +5,13 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import java.util.logging.LogRecord;
+
+import edu.uark.uarkregisterapp.models.transition.EmployeeTransition;
+
+import static edu.uark.uarkregisterapp.R.id.welcomeStatement;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -14,6 +19,16 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        EmployeeTransition nameobj= getIntent().getParcelableExtra("userTag");
+
+
+        TextView textView = (TextView) findViewById(R.id.welcomeStatement);
+        textView.setText("Welcome " + nameobj + "! What would you like to do next?");
+
+        //String welcomeStatement = "Welcome " + nameobj + "! What would you like to do next?";
+        //welcomeStatement.setText(tempWelcome);
+
     }
 
     //when client clicks the "Start Transaction" button
