@@ -31,8 +31,9 @@ public class EmployeeTransition implements Parcelable {
 
     public String getUserName () {
 
-        return "Garrett";
+        return this.UserName;
     }
+
     @Override
     public int describeContents() {
 // TODO Auto-generated method stub

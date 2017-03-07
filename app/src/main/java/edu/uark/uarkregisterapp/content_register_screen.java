@@ -36,15 +36,6 @@ public class content_register_screen extends AppCompatActivity {
 
     public void startLoginButtonClick (View view) {
 
-        /*EditText editText2 = (EditText) content_register_screen.findViewById(R.id.editText2);
-        public String user = editText2.getText().toString();
-
-        EditText editText = (EditText) content_register_screen.findViewById(R.id.editText);
-        String pass = editText.getText().toString();*/
-
-        //String user = userText.getText().toString();
-        //String pass = passText.getText().toString();
-
         EditText text = (EditText)findViewById(R.id.userText);
         String user = text.getText().toString();
 

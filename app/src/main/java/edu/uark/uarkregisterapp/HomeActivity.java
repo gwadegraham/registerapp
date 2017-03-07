@@ -25,13 +25,8 @@ public class HomeActivity extends AppCompatActivity {
 
 
         TextView textView = (TextView) findViewById(R.id.welcomeStatement);
-        //String welcomeName = EmployeeTransition.UserName;
-        System.out.println("Hey look at me: --------> " + nameobj);
-        textView.setText("Welcome " + nameobj + "! What would you like to do next?");
-
-        //String welcomeStatement = "Welcome " + nameobj + "! What would you like to do next?";
-        //welcomeStatement.setText(tempWelcome);
-
+        String welcomeName = nameobj.getUserName();
+        textView.setText("Welcome " + welcomeName + "! What would you like to do next?");
     }
 
     //when client clicks the "Start Transaction" button
