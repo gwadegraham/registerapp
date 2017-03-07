@@ -18,10 +18,11 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         EmployeeTransition nameobj= getIntent().getParcelableExtra("userTag");
+        EmployeeTransition employeeobj= getIntent().getParcelableExtra("createEmployee");
 
 
         TextView textView = (TextView) findViewById(R.id.welcomeStatement);
-        String welcomeName = nameobj.getUserName();
+        String welcomeName = employeeobj.getUserName();
         textView.setText("Welcome " + welcomeName + "! What would you like to do next?");
     }
 

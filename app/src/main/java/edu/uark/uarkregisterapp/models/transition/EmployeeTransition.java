@@ -12,10 +12,18 @@ public class EmployeeTransition implements Parcelable {
 
     String UserName;
     String  Password;
+    String fname;
+    String lname;
 
     public EmployeeTransition(String name,String pass){
         UserName=name;
         Password=pass;
+    }
+
+    public EmployeeTransition(String firstName, String lastName, String pass) {
+        fname = firstName;
+        lname = lastName;
+        Password = pass;
     }
 
 

@@ -13,7 +13,36 @@
     tools:context="edu.uark.uarkregisterapp.content_register_screen"
     tools:showIn="@layout/activity_content_register_screen">
 
+    <TextView
+        android:id="@+id/textView"
+        android:text="Welcome! Please log in!"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:textSize="25dp"
+        android:textColor="#000"
+        />
+
     <EditText
+        android:id="@+id/userText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="Employee ID"
+        android:ems="10"
+        android:gravity="center"
+        android:layout_marginTop="53dp"
+        android:layout_below="@+id/textView"
+        android:layout_alignLeft="@+id/passText"
+        android:layout_alignStart="@+id/passText">
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/passText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
@@ -21,45 +50,16 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="206dp"
-        android:id="@+id/passText"
         android:gravity="center"
         android:hint="Password"
         android:text="" />
 
-    <TextView
-        android:text="Welcome! Please log in!"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp"
-        android:id="@+id/textView"
-        android:textSize="25dp"
-        android:textColor="#000"
-        />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:hint="Employee ID"
-        android:ems="10"
-        android:id="@+id/userText"
-        android:gravity="center"
-        android:layout_marginTop="53dp"
-        android:layout_below="@+id/textView"
-        android:layout_alignLeft="@+id/passText"
-        android:layout_alignStart="@+id/passText">
-
-    <requestFocus />
-    </EditText>
-
     <Button
+        android:id="@+id/button"
         android:text="Log In"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
-        android:id="@+id/button"
         android:onClick="startLoginButtonClick"
         android:layout_below="@+id/passText"
         android:layout_centerHorizontal="true"/>

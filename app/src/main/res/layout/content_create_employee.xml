@@ -13,53 +13,70 @@
     tools:context="edu.uark.uarkregisterapp.create_employee"
     tools:showIn="@layout/activity_create_employee">
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:hint="Password"
-        android:gravity="center"
-        android:ems="10"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="202dp"
-        android:id="@+id/editText3" />
-
     <TextView
+        android:id="@+id/createEmployeeGreeting"
         android:text="Create your first employee!"
         android:textColor="#000"
         android:textSize="25dp"
         android:hint="Password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView2"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="43dp" />
 
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:hint="Last Name"
-        android:gravity="center"
-        android:ems="10"
-        android:layout_marginBottom="46dp"
-        android:id="@+id/editText5"
-        android:layout_alignBottom="@+id/editText3"
-        android:layout_alignLeft="@+id/editText3"
-        android:layout_alignStart="@+id/editText3" />
-
-    <EditText
+        android:id="@+id/fnameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:hint="First Name"
         android:gravity="center"
         android:ems="10"
-        android:id="@+id/editText4"
-        android:layout_above="@+id/editText5"
-        android:layout_alignLeft="@+id/editText5"
-        android:layout_alignStart="@+id/editText5" />
+        android:layout_marginBottom="30dp"
+        android:layout_above="@+id/lnameText"
+        android:layout_alignLeft="@+id/lnameText"
+        android:layout_alignStart="@+id/lnameText">
+        <requestFocus/>
+    </EditText>
+
+    <EditText
+        android:id="@+id/lnameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="Last Name"
+        android:gravity="center"
+        android:ems="10"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/passText"
+        android:layout_alignStart="@+id/passText"/>
+
+    <EditText
+        android:id="@+id/passText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:hint="Password"
+        android:gravity="center"
+        android:ems="10"
+        android:layout_marginRight="27dp"
+        android:layout_marginEnd="27dp"
+        android:layout_below="@+id/lnameText"
+        android:layout_alignRight="@+id/createEmployeeGreeting"
+        android:layout_alignEnd="@+id/createEmployeeGreeting"/>
+
+    <Button
+        android:id="@+id/saveEmployee"
+        android:text="Save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="25dp"
+        android:onClick="startSaveButtonClick"/>
 
 </RelativeLayout>
