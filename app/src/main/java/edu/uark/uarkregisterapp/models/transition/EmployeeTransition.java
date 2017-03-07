@@ -13,12 +13,9 @@ public class EmployeeTransition implements Parcelable {
     String UserName;
     String  Password;
 
-
-
     public EmployeeTransition(String name,String pass){
         UserName=name;
         Password=pass;
-
     }
 
 
@@ -30,6 +27,11 @@ public class EmployeeTransition implements Parcelable {
         this.UserName= data[0];
         this.Password= data[1];
 
+    }
+
+    public String getUserName () {
+
+        return "Garrett";
     }
     @Override
     public int describeContents() {

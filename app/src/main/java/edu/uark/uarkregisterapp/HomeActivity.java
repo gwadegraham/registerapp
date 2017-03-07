@@ -1,6 +1,7 @@
 package edu.uark.uarkregisterapp;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,6 +25,8 @@ public class HomeActivity extends AppCompatActivity {
 
 
         TextView textView = (TextView) findViewById(R.id.welcomeStatement);
+        //String welcomeName = EmployeeTransition.UserName;
+        System.out.println("Hey look at me: --------> " + nameobj);
         textView.setText("Welcome " + nameobj + "! What would you like to do next?");
 
         //String welcomeStatement = "Welcome " + nameobj + "! What would you like to do next?";
@@ -91,5 +94,10 @@ public class HomeActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
+    public void logOutButtonClick (View view) {
+
+        Intent i = new Intent(this, content_register_screen.class);
+        startActivity(i);
+    }
 
 }
