@@ -1,5 +1,7 @@
 package edu.uark.uarkregisterapp;
 
+import edu.uark.uarkregisterapp.models.transition.EmployeeTransition;
+
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
@@ -7,12 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-
-import java.util.logging.LogRecord;
-
-import edu.uark.uarkregisterapp.models.transition.EmployeeTransition;
-
-import static edu.uark.uarkregisterapp.R.id.welcomeStatement;
 
 public class HomeActivity extends AppCompatActivity {
 

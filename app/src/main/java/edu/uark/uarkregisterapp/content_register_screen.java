@@ -1,17 +1,17 @@
 package edu.uark.uarkregisterapp;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
 
 import edu.uark.uarkregisterapp.models.transition.EmployeeTransition;
+
+import static edu.uark.uarkregisterapp.R.id.userText;
 
 
 public class content_register_screen extends AppCompatActivity {
@@ -36,7 +36,7 @@ public class content_register_screen extends AppCompatActivity {
 
     public void startLoginButtonClick (View view) {
 
-        EditText text = (EditText)findViewById(R.id.userText);
+        EditText text = (EditText)findViewById(userText);
         String user = text.getText().toString();
 
         EditText text2 = (EditText)findViewById(R.id.passText);

@@ -35,10 +35,11 @@
             android:name=".ProductViewActivity"
             android:label="@string/title_activity_product_view"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".HomeActivity" />
+        <activity
+            android:name=".HomeActivity" android:label="Employee Home Screen"/>
         <activity
             android:name=".content_register_screen"
-            android:label="@string/title_activity_content_register_screen"
+            android:label="Login"
             android:theme="@style/AppTheme.NoActionBar" >
 
             <intent-filter>

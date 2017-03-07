@@ -29,20 +29,23 @@ public class EmployeeTransition implements Parcelable {
 
     }
 
+    //method that returns the Username
     public String getUserName () {
-
         return this.UserName;
+    }
+
+    //method that returns the Password
+    public String getPassword() {
+        return this.Password;
     }
 
     @Override
     public int describeContents() {
-// TODO Auto-generated method stub
         return 0;
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-// TODO Auto-generated method stub
 
         dest.writeStringArray(new String[]{this.UserName,this.Password});
     }
@@ -51,13 +54,11 @@ public class EmployeeTransition implements Parcelable {
 
         @Override
         public EmployeeTransition createFromParcel(Parcel source) {
-// TODO Auto-generated method stub
             return new EmployeeTransition(source);  //using parcelable constructor
         }
 
         @Override
         public EmployeeTransition[] newArray(int size) {
-//TODO Auto-generated method stub
             return new EmployeeTransition[size];
         }
     };
