@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 public class HomeActivity extends AppCompatActivity {
 
+    //All of this happens when this activity page initially loads
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -102,8 +103,10 @@ public class HomeActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
+    //when client clicks the "Log Out" button
     public void logOutButtonClick (View view) {
 
+        //upon clicking the log out button, the client is sent back to the login page
         Intent i = new Intent(this, content_register_screen.class);
         startActivity(i);
     }
