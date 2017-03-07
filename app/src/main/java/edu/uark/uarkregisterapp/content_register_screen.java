@@ -36,6 +36,7 @@ public class content_register_screen extends AppCompatActivity {
 
         i.putExtra("userTag",obj);
 
+
         startActivity(i);
     }
 
