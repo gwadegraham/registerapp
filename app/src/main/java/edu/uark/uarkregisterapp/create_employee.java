@@ -40,6 +40,7 @@ public class create_employee extends AppCompatActivity {
         Intent i=new Intent(this,HomeActivity.class);
 
         i.putExtra("createEmployee",obj);
+        i.putExtra("FROM_ACTIVITY", "createEmployee");
 
         startActivity(i);
     }

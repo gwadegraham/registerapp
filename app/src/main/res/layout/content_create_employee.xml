@@ -35,8 +35,7 @@
         android:ems="10"
         android:layout_marginBottom="30dp"
         android:layout_above="@+id/lnameText"
-        android:layout_alignLeft="@+id/lnameText"
-        android:layout_alignStart="@+id/lnameText">
+        android:layout_centerHorizontal="true">
         <requestFocus/>
     </EditText>
 
@@ -49,8 +48,8 @@
         android:gravity="center"
         android:ems="10"
         android:layout_centerVertical="true"
-        android:layout_alignLeft="@+id/passText"
-        android:layout_alignStart="@+id/passText"/>
+        android:layout_alignLeft="@+id/fnameText"
+        android:layout_alignStart="@+id/fnameText"/>
 
     <EditText
         android:id="@+id/passText"
@@ -60,11 +59,9 @@
         android:hint="Password"
         android:gravity="center"
         android:ems="10"
-        android:layout_marginRight="27dp"
-        android:layout_marginEnd="27dp"
         android:layout_below="@+id/lnameText"
-        android:layout_alignRight="@+id/createEmployeeGreeting"
-        android:layout_alignEnd="@+id/createEmployeeGreeting"/>
+        android:layout_alignLeft="@+id/lnameText"
+        android:layout_alignStart="@+id/lnameText"/>
 
     <Button
         android:id="@+id/saveEmployee"

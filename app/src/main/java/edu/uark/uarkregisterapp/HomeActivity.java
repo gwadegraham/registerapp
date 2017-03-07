@@ -17,13 +17,29 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        EmployeeTransition nameobj= getIntent().getParcelableExtra("userTag");
-        EmployeeTransition employeeobj= getIntent().getParcelableExtra("createEmployee");
+        //Code that determines which activity the user came from previously,
+        //(Login or CreateEmployee), and then takes the correct parcelable object
+        //from that corresponding intent
+        String previousActivity= getIntent().getStringExtra("FROM_ACTIVITY");
 
+        //if the user came from the login page
+        if (previousActivity.equals("login")){
 
-        TextView textView = (TextView) findViewById(R.id.welcomeStatement);
-        String welcomeName = employeeobj.getUserName();
-        textView.setText("Welcome " + welcomeName + "! What would you like to do next?");
+            EmployeeTransition nameobj= getIntent().getParcelableExtra("userTag");
+            TextView textView = (TextView) findViewById(R.id.welcomeStatement);
+            String welcomeName = nameobj.getUserName();
+            textView.setText("Welcome " + welcomeName + "! What would you like to do next?");
+        }
+
+        //if the user came from the create employee page
+        else if (previousActivity.equals("createEmployee")){
+
+            EmployeeTransition employeeobj= getIntent().getParcelableExtra("createEmployee");
+            TextView textView = (TextView) findViewById(R.id.welcomeStatement);
+            String welcomeName = employeeobj.getUserName();
+            textView.setText("Welcome " + welcomeName + "! What would you like to do next?");
+        }
+
     }
 
     //when client clicks the "Start Transaction" button
