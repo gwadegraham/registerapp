@@ -7,6 +7,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
 
+import org.apache.commons.codec.digest.DigestUtils;
+
 import edu.uark.uarkregisterapp.models.transition.EmployeeTransition;
 
 import static edu.uark.uarkregisterapp.R.id.userText;
@@ -30,6 +32,8 @@ public class content_register_screen extends AppCompatActivity {
 
         EditText text2 = (EditText)findViewById(R.id.passText);
         String pass = text2.getText().toString();
+        //String encryptPass = DigestUtils.sha1Hex(pass);
+        //System.out.println(encryptPass);
 
         EmployeeTransition obj= new EmployeeTransition(user,pass);
         Intent i=new Intent(this,HomeActivity.class);
