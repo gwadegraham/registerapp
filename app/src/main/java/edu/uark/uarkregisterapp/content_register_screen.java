@@ -22,6 +22,14 @@ public class content_register_screen extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
     }
+    /* Modify later for inserting SongYun's Query
+       - quinn
+     */
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
 
     public void startLoginButtonClick (View view) {
 
@@ -35,6 +43,7 @@ public class content_register_screen extends AppCompatActivity {
         Intent i=new Intent(this,HomeActivity.class);
 
         i.putExtra("userTag",obj);
+        i.putExtra("FROM_ACTIVITY", "login");
 
 
         startActivity(i);
