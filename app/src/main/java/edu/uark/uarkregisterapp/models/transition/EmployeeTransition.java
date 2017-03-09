@@ -21,7 +21,7 @@ public class EmployeeTransition implements Parcelable {
     }
 
     public EmployeeTransition(String firstName, String lastName, String pass) {
-        fname = firstName;
+        UserName = firstName;
         lname = lastName;
         Password = pass;
     }
