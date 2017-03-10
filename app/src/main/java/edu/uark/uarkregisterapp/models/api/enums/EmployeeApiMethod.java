@@ -11,7 +11,7 @@ import edu.uark.uarkregisterapp.models.api.interfaces.PathElementInterface;
 
 public enum EmployeeApiMethod implements PathElementInterface {
     NONE(""),
-    EMPLOYEEID("employeeId"),
+    EMPLOYEE_ID("employeeId"),
     PASSWORD("password"),
     PRODUCTS("products"),
     CHECK("check");
