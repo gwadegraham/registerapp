@@ -7,7 +7,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
 
-import org.apache.commons.codec.digest.DigestUtils;
+//import org.apache.commons.codec.digest.DigestUtils;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 import edu.uark.uarkregisterapp.models.transition.EmployeeTransition;
 
@@ -35,7 +37,7 @@ public class content_register_screen extends AppCompatActivity {
     }
 
     //when the client clicks the login button
-    public void startLoginButtonClick (View view) {
+    public void startLoginButtonClick (View view) throws NoSuchAlgorithmException {
 
         //retrieves the employee ID input from the user
         EditText text = (EditText)findViewById(userText);
@@ -45,9 +47,21 @@ public class content_register_screen extends AppCompatActivity {
         EditText text2 = (EditText)findViewById(R.id.passText);
         String pass = text2.getText().toString();
 
-        //implementing SHA1 hash of the password
-        //String encryptPass = DigestUtils.sha1Hex(pass);
-        //System.out.println(encryptPass);
+        //implementing SHA-256 hash of the password -------------------------------------
+        MessageDigest md = MessageDigest.getInstance("SHA-256");
+        md.update(pass.getBytes());
+
+        byte byteData[] = md.digest();
+
+        //convert the byte to hex format method 1
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < byteData.length; i++) {
+            sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
+        }
+
+        System.out.println("Password in regular format : " + pass);
+        System.out.println("Password in hex format : " + sb.toString());
+        //finished hashing--------------------------------------------------------------
 
         //creating a parcelable object, so the employeeID and password can
         //be passed to the next activity
