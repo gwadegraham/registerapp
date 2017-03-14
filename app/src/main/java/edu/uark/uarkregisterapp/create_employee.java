@@ -69,7 +69,6 @@ public class create_employee extends AppCompatActivity {
 
         //passing the parcelable object w/ the intent
         i.putExtra("createEmployee",obj);
-        i.putExtra("FROM_ACTIVITY", "createEmployee");
 
         //passing a string w/ the intent, so the Home Screen knows which parcelable
         //display in the welcome statement

@@ -73,8 +73,6 @@ public class content_register_screen extends AppCompatActivity {
 
         //passing the parcelable object w/ the intent
         i.putExtra("userTag",obj);
-        i.putExtra("FROM_ACTIVITY", "login");
-
 
         //passing a string w/ the intent, so the Home Screen knows which parcelable
         //display in the welcome statement

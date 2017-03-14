@@ -2,6 +2,8 @@ package edu.uark.uarkregisterapp.models.transition;
 
 /**
  * Created by garrett on 3/6/17.
+ * this class implements the parcelable class, in order to pass information about -
+ * - the employee from activity to activity
  */
 
 import android.os.Parcelable;
@@ -43,9 +45,7 @@ public class EmployeeTransition implements Parcelable {
     }
 
     //method that returns the Password
-    public String getPassword() {
-        return this.Password;
-    }
+    public String getPassword() { return this.Password; }
 
     @Override
     public int describeContents() {

@@ -45,62 +45,25 @@ public class HomeActivity extends AppCompatActivity {
 
     //when client clicks the "Start Transaction" button
     public void startTransactionButtonClick (View view) {
-
-        AlertDialog alertDialog = new AlertDialog.Builder(HomeActivity.this).create();
-        alertDialog.setTitle("Alert");
-        alertDialog.setMessage("Functionality not yet implemented");
-        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-        alertDialog.show();
+        showAlertDialog();
     }
 
     //when client clicks the "Create Employee" button
     public void createEmployeeButtonClick (View view) {
 
-        AlertDialog alertDialog = new AlertDialog.Builder(HomeActivity.this).create();
-        alertDialog.setTitle("Alert");
-        alertDialog.setMessage("Functionality not yet implemented");
-        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-        alertDialog.show();
+        showAlertDialog();
     }
 
     //when client clicks the "Sales Report: Product" button
     public void reportProductButtonClick (View view) {
 
-        AlertDialog alertDialog = new AlertDialog.Builder(HomeActivity.this).create();
-        alertDialog.setTitle("Alert");
-        alertDialog.setMessage("Functionality not yet implemented");
-        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-        alertDialog.show();
+        showAlertDialog();
     }
 
     //when client clicks the "Sales Report: Cashier" button
     public void reportCashierButtonClick (View view) {
 
-        AlertDialog alertDialog = new AlertDialog.Builder(HomeActivity.this).create();
-        alertDialog.setTitle("Alert");
-        alertDialog.setMessage("Functionality not yet implemented");
-        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-        alertDialog.show();
+        showAlertDialog();
     }
 
     //when client clicks the "Log Out" button
@@ -109,6 +72,21 @@ public class HomeActivity extends AppCompatActivity {
         //upon clicking the log out button, the client is sent back to the login page
         Intent i = new Intent(this, content_register_screen.class);
         startActivity(i);
+    }
+
+    //function to launch an alert dialog box
+    public void showAlertDialog () {
+
+        AlertDialog alertDialog = new AlertDialog.Builder(HomeActivity.this).create();
+        alertDialog.setTitle("Alert");
+        alertDialog.setMessage("Functionality not yet implemented");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        alertDialog.show();
     }
 
 }
