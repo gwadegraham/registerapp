@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
 
+import edu.uark.uarkregisterapp.models.api.Employee;
 import edu.uark.uarkregisterapp.models.transition.EmployeeTransition;
 
 import static edu.uark.uarkregisterapp.R.id.fnameText;
@@ -61,7 +62,7 @@ public class create_employee extends AppCompatActivity {
 
         //creating a parcelable object, so the first name, last name,  and password can
         //be passed to the next activity
-        EmployeeTransition employee= new EmployeeTransition();
+        Employee employee = new Employee();
         employee.setPassword(pass);
         employee.setFirstName(firstName);
         employee.setLastName(lastName);
@@ -71,11 +72,8 @@ public class create_employee extends AppCompatActivity {
         Intent nextIntent = new Intent(this,HomeActivity.class);
 
         //passing the parcelable object w/ the intent
-        nextIntent.putExtra("createEmployee",employee);
-
-        //passing a string w/ the intent, so the Home Screen knows which parcelable
-        //display in the welcome statement
-        nextIntent.putExtra("FROM_ACTIVITY", "createEmployee");
+        EmployeeTransition employeeObject = new EmployeeTransition(employee);
+        nextIntent.putExtra("loginTag",employeeObject);
 
         //starts the next intent (i.e. launches the home screen activity)
         startActivity(nextIntent);

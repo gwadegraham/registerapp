@@ -124,10 +124,10 @@ public class EmployeeTransition implements Parcelable {
         destination.writeString(this.firstName);
         destination.writeString(this.lastName);
         destination.writeString(this.password);
-        destination.writeInt(this.active ? 1 : 0);
-        destination.writeInt(this.classification.getValue());
         destination.writeByteArray((new UUIDToByteConverterCommand()).setValueToConvert(this.managerId).execute());
+        destination.writeInt(this.classification.getValue());
         destination.writeLong(this.createdOn.getTime());
+        destination.writeInt(this.active ? 1 : 0);
     }
 
 

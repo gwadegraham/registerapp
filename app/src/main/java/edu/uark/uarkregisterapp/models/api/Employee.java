@@ -255,17 +255,18 @@ public class Employee implements ConvertToJsonInterface, LoadFromJsonInterface<E
 
 
     public Employee() {
-        this.active = false;
+
         this.id = new UUID(0, 0);
-        this.createdOn = new Date();
-        this.managerId = new UUID(0, 0);
+        this.employeeId = StringUtils.EMPTY;
+        this.firstName = StringUtils.EMPTY;
         this.lastName = StringUtils.EMPTY;
         this.password = StringUtils.EMPTY;
-        this.firstName = StringUtils.EMPTY;
-        this.employeeId = StringUtils.EMPTY;
+        this.managerId = new UUID(0, 0);
+        this.classification = EmployeeClassification.NOT_DEFINED;
+        this.createdOn = new Date();
+        this.active = false;
         this.apiRequestMessage = StringUtils.EMPTY;
         this.apiRequestStatus = EmployeeApiRequestStatus.OK;
-        this.classification = EmployeeClassification.NOT_DEFINED;
     }
 
 }

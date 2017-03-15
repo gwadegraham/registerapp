@@ -18,11 +18,8 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        System.out.println("Testing 3----------->");
-
-        //EmployeeTransition transitionobject= getIntent().getParcelableExtra("loginTag");
+        //getting the parcelable object from the previous activity
         this.employeeTransition = this.getIntent().getParcelableExtra("loginTag");
-        System.out.println("Testing 6----------->");
         TextView textView = (TextView) findViewById(R.id.welcomeStatement);
         String welcomeName = this.employeeTransition.getFirstName();
         textView.setText("Welcome " + welcomeName + "! What would you like to do next?");
