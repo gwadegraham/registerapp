@@ -18,28 +18,14 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        //Code that determines which activity the user came from previously,
-        //(Login or CreateEmployee), and then takes the correct parcelable object
-        //from that corresponding intent
-        String previousActivity= getIntent().getStringExtra("FROM_ACTIVITY");
+        System.out.println("Testing 3----------->");
 
-        //if the user came from the login page
-        if (previousActivity.equals("login")){
-
-            EmployeeTransition nameobj= getIntent().getParcelableExtra("userTag");
-            TextView textView = (TextView) findViewById(R.id.welcomeStatement);
-            String welcomeName = nameobj.getUserName();
-            textView.setText("Welcome " + welcomeName + "! What would you like to do next?");
-        }
-
-        //if the user came from the create employee page
-        else if (previousActivity.equals("createEmployee")){
-
-            EmployeeTransition employeeobj= getIntent().getParcelableExtra("createEmployee");
-            TextView textView = (TextView) findViewById(R.id.welcomeStatement);
-            String welcomeName = employeeobj.getUserName();
-            textView.setText("Welcome " + welcomeName + "! What would you like to do next?");
-        }
+        //EmployeeTransition transitionobject= getIntent().getParcelableExtra("loginTag");
+        this.employeeTransition = this.getIntent().getParcelableExtra("loginTag");
+        System.out.println("Testing 6----------->");
+        TextView textView = (TextView) findViewById(R.id.welcomeStatement);
+        String welcomeName = this.employeeTransition.getFirstName();
+        textView.setText("Welcome " + welcomeName + "! What would you like to do next?");
 
     }
 
@@ -88,5 +74,7 @@ public class HomeActivity extends AppCompatActivity {
                 });
         alertDialog.show();
     }
+
+    private EmployeeTransition employeeTransition;
 
 }

@@ -9,21 +9,25 @@ import edu.uark.uarkregisterapp.models.api.interfaces.FieldNameInterface;
 
 public enum EmployeeFieldName implements FieldNameInterface {
     ID("id"),
-    FIRSTNAME("firstname"),
-    LASTNAME("lastname"),
     EMPLOYEE_ID("employeeid"),
-    ACTIVE("active"),
-    CURRENT_ROLE("currentrole"),
-    MANAGER_ID("managerid"),
+    FIRST_NAME("firstname"),
+    LAST_NAME("lastname"),
     PASSWORD("password"),
+    ACTIVE("active"),
+    CLASSIFICATION("classification"),
+    MANAGER_ID("managerid"),
+    API_REQUEST_STATUS("apiRequestStatus"),
+    API_REQUEST_MESSAGE("apiRequestMessage"),
     CREATED_ON("createdOn");
 
     private String fieldName;
     public String getFieldName() {
+
         return this.fieldName;
     }
 
     EmployeeFieldName(String fieldName) {
+
         this.fieldName = fieldName;
     }
 

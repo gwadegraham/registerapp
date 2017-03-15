@@ -61,21 +61,24 @@ public class create_employee extends AppCompatActivity {
 
         //creating a parcelable object, so the first name, last name,  and password can
         //be passed to the next activity
-        EmployeeTransition obj= new EmployeeTransition(firstName,lastName, pass);
+        EmployeeTransition employee= new EmployeeTransition();
+        employee.setPassword(pass);
+        employee.setFirstName(firstName);
+        employee.setLastName(lastName);
 
         //Creating a new intent for the Home Screen
         //(i.e. navigating to the home screen after the user clicks save)
-        Intent i=new Intent(this,HomeActivity.class);
+        Intent nextIntent = new Intent(this,HomeActivity.class);
 
         //passing the parcelable object w/ the intent
-        i.putExtra("createEmployee",obj);
+        nextIntent.putExtra("createEmployee",employee);
 
         //passing a string w/ the intent, so the Home Screen knows which parcelable
         //display in the welcome statement
-        i.putExtra("FROM_ACTIVITY", "createEmployee");
+        nextIntent.putExtra("FROM_ACTIVITY", "createEmployee");
 
         //starts the next intent (i.e. launches the home screen activity)
-        startActivity(i);
+        startActivity(nextIntent);
     }
 
 }

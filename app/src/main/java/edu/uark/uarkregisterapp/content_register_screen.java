@@ -11,6 +11,7 @@ import android.widget.EditText;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import edu.uark.uarkregisterapp.models.api.Employee;
 import edu.uark.uarkregisterapp.models.transition.EmployeeTransition;
 
 import static edu.uark.uarkregisterapp.R.id.userText;
@@ -41,7 +42,7 @@ public class content_register_screen extends AppCompatActivity {
 
         //retrieves the employee ID input from the user
         EditText text = (EditText)findViewById(userText);
-        String user = text.getText().toString();
+        String employeeId = text.getText().toString();
 
         //retrieves the password input from the user
         EditText text2 = (EditText)findViewById(R.id.passText);
@@ -65,21 +66,27 @@ public class content_register_screen extends AppCompatActivity {
 
         //creating a parcelable object, so the employeeID and password can
         //be passed to the next activity
-        EmployeeTransition obj= new EmployeeTransition(user,pass);
+        //EmployeeTransition employee = new EmployeeTransition();
+        Employee employee = new Employee();
+        employee.setPassword(pass);
+        employee.setEmployeeId(employeeId);
+        System.out.println("Testing 1----------->");
 
         //Creating a new intent for the Home Screen
         //(i.e. navigating to the home screen after the user clicks login)
-        Intent i=new Intent(this,HomeActivity.class);
+        Intent nextIntent = new Intent(this,HomeActivity.class);
 
         //passing the parcelable object w/ the intent
-        i.putExtra("userTag",obj);
+        EmployeeTransition employeeObject = new EmployeeTransition(employee);
+        nextIntent.putExtra("loginTag",employeeObject);
+        System.out.println("Testing 2----------->");
 
         //passing a string w/ the intent, so the Home Screen knows which parcelable
         //display in the welcome statement
-        i.putExtra("FROM_ACTIVITY", "login");
+        //nextIntent.putExtra("FROM_ACTIVITY", "login");
 
         //starts the next intent (i.e. launches the home screen activity)
-        startActivity(i);
+        startActivity(nextIntent);
     }
 
 }
