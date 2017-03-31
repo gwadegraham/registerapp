@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_start_transaction_landing"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="edu.uark.uarkregisterapp.StartTransactionLandingActivity">
+
+    <TextView
+        android:text= "What would you like to do?"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="37dp"
+        android:id="@+id/welcomeStatement"/>
+
+    <Button
+        android:text="Search Products"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:id="@+id/searchProducts"
+        android:layout_below="@+id/welcomeStatement"
+        android:layout_centerHorizontal="true"
+        android:onClick="searchProductsButtonClick"/>
+
+    <Button
+        android:text="Transaction Summary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/transactionSummary"
+        android:layout_marginTop="23dp"
+        android:layout_below="@+id/searchProducts"
+        android:layout_centerHorizontal="true"
+        android:onClick="transactionSummaryButtonClick"/>
+
+    <Button
+        android:text="Back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/back"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="36dp"
+        android:onClick="backButtonClick"/>
+</RelativeLayout>

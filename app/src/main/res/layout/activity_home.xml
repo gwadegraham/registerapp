@@ -24,11 +24,11 @@
         android:text="Start Transaction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="27dp"
         android:id="@+id/startTransaction"
+        android:onClick="startTransactionButtonClick"
         android:layout_below="@+id/welcomeStatement"
-        android:layout_centerHorizontal="true"
-        android:onClick="startTransactionButtonClick"/>
+        android:layout_centerHorizontal="true"/>
 
     <Button
         android:text="Create Employee"

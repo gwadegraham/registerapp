@@ -28,7 +28,11 @@ public class HomeActivity extends AppCompatActivity {
 
     //when client clicks the "Start Transaction" button
     public void startTransactionButtonClick (View view) {
-        showAlertDialog();
+
+        //upon clicking the start transaction button, the client is sent to StartTransactionLandingActivity
+        Intent i = new Intent(this, StartTransactionLandingActivity.class);
+        startActivity(i);
+
     }
 
     //when client clicks the "Create Employee" button
