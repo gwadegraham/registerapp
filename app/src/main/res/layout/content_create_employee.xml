@@ -11,7 +11,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="edu.uark.uarkregisterapp.create_employee"
-    tools:showIn="@layout/activity_create_employee">
+    tools:showIn="@layout/content_create_employee">
 
     <TextView
         android:id="@+id/createEmployeeGreeting"
@@ -26,7 +26,7 @@
         android:layout_marginTop="43dp" />
 
     <EditText
-        android:id="@+id/fnameText"
+        android:id="@+id/edit_text_employee_create_first_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
@@ -34,13 +34,13 @@
         android:gravity="center"
         android:ems="10"
         android:layout_marginBottom="30dp"
-        android:layout_above="@+id/lnameText"
+        android:layout_above="@+id/edit_text_employee_create_last_name"
         android:layout_centerHorizontal="true">
         <requestFocus/>
     </EditText>
 
     <EditText
-        android:id="@+id/lnameText"
+        android:id="@+id/edit_text_employee_create_last_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
@@ -48,20 +48,28 @@
         android:gravity="center"
         android:ems="10"
         android:layout_centerVertical="true"
-        android:layout_alignLeft="@+id/fnameText"
-        android:layout_alignStart="@+id/fnameText"/>
+        android:layout_alignLeft="@+id/edit_text_employee_create_first_name"
+        android:layout_alignStart="@+id/edit_text_employee_create_first_name"/>
 
     <EditText
-        android:id="@+id/passText"
+        android:id="@+id/edit_text_employee_create_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:hint="Password"
         android:gravity="center"
         android:ems="10"
-        android:layout_below="@+id/lnameText"
-        android:layout_alignLeft="@+id/lnameText"
-        android:layout_alignStart="@+id/lnameText"/>
+        android:layout_below="@+id/edit_text_employee_create_last_name"
+        android:layout_alignLeft="@+id/edit_text_employee_create_last_name"
+        android:layout_alignStart="@+id/edit_text_employee_create_last_name"/>
+    <EditText
+        android:id="@+id/edit_text_employee_create_password_confirm"
+        android:hint="@string/edit_text_hint_employee_create_password_confirm"
+        android:inputType="textPassword"
+        android:layout_below="@+id/edit_text_employee_create_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"/>
 
     <Button
         android:id="@+id/saveEmployee"
@@ -74,6 +82,6 @@
         android:layout_marginRight="12dp"
         android:layout_marginEnd="12dp"
         android:layout_marginBottom="25dp"
-        android:onClick="startSaveButtonClick"/>
+        android:onClick="saveButtonOnClick"/>
 
 </RelativeLayout>
