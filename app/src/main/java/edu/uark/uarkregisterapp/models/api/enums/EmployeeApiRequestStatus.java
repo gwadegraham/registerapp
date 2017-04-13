@@ -5,10 +5,6 @@ import android.util.SparseArray;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by QUinn Childress on 3/9/17.
- */
-
 public enum EmployeeApiRequestStatus {
     OK(0),
     INVALID_INPUT(1),
