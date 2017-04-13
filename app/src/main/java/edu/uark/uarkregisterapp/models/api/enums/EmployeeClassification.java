@@ -1,9 +1,5 @@
 package edu.uark.uarkregisterapp.models.api.enums;
 
-/**
- * Created by garrett on 3/14/17.
- */
-
 import android.util.SparseArray;
 
 import java.util.HashMap;

@@ -14,7 +14,8 @@ public enum EmployeeApiRequestStatus {
     INVALID_INPUT(1),
     UNKNOWN_ERROR(2),
     NOT_FOUND(3),
-    EMPLOYEE_ID_ALREADY_EXISTS(4);
+    EMPLOYEE_ID_ALREADY_EXISTS(4),
+    INVALID_EMPLOYEE_ID_CHANGE(5);
 
     public int getValue() {
         return value;
@@ -52,5 +53,4 @@ public enum EmployeeApiRequestStatus {
     private EmployeeApiRequestStatus(int value) {
         this.value = value;
     }
-
 }

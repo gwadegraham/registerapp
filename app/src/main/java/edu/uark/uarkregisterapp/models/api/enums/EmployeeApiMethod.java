@@ -5,16 +5,11 @@ import java.util.Map;
 
 import edu.uark.uarkregisterapp.models.api.interfaces.PathElementInterface;
 
-/**
- * Created by Quinn Childress on 3/9/17.
- */
-
 public enum EmployeeApiMethod implements PathElementInterface {
     NONE(""),
-    EMPLOYEE_ID("employeeId"),
-    PASSWORD("password"),
-    PRODUCTS("products"),
-    CHECK("check");
+    EMPLOYEE("employee"),
+    ACTIVE_COUNTS("activecounts"),
+    LOGIN("login");
 
     @Override
     public String getPathValue() {
@@ -32,6 +27,7 @@ public enum EmployeeApiMethod implements PathElementInterface {
 
         return (valueMap.containsKey(key) ? valueMap.get(key) : EmployeeApiMethod.NONE);
     }
+
     private String value;
 
     private static Map<String, EmployeeApiMethod> valueMap = null;

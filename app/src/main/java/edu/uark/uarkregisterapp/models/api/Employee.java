@@ -16,185 +16,111 @@ import edu.uark.uarkregisterapp.models.api.fields.EmployeeFieldName;
 import edu.uark.uarkregisterapp.models.api.interfaces.ConvertToJsonInterface;
 import edu.uark.uarkregisterapp.models.api.interfaces.LoadFromJsonInterface;
 
-/**
- * Created by GANGSTATOP on 3/9/17.
- */
-
 public class Employee implements ConvertToJsonInterface, LoadFromJsonInterface<Employee> {
-
     private UUID id;
-
-
     public UUID getId() {
         return this.id;
     }
-
-
     public Employee setId(UUID id) {
-
         this.id = id;
         return this;
     }
 
-
     private String employeeId;
-
-
     public String getEmployeeId() {
         return this.employeeId;
     }
-
-
     public Employee setEmployeeId(String employeeId) {
-
         this.employeeId = employeeId;
         return this;
     }
 
-
     private String firstName;
-
-
     public String getFirstName() {
         return this.firstName;
     }
-
-
     public Employee setFirstName(String firstName) {
-
         this.firstName = firstName;
         return this;
     }
 
-
     private String lastName;
-
-
     public String getLastName() {
         return this.lastName;
     }
-
-
     public Employee setLastName(String lastName) {
-
         this.lastName = lastName;
         return this;
     }
 
-
     private String password;
-
-
     public String getPassword() {
         return this.password;
     }
-
-
     public Employee setPassword(String password) {
-
         this.password = password;
         return this;
     }
 
-
     private boolean active;
-
-
     public boolean getActive() {
         return this.active;
     }
-
-
     public Employee setActive(boolean active) {
-
         this.active = active;
         return this;
     }
 
-
     private EmployeeClassification classification;
-
-
     public EmployeeClassification getClassification() {
         return this.classification;
     }
-
-
     public Employee setClassification(EmployeeClassification classification) {
         this.classification = classification;
         return this;
     }
 
-
     private UUID managerId;
-
-
     public UUID getManagerId() {
         return this.managerId;
     }
-
-
     public Employee setManagerId(UUID managerId) {
-
         this.managerId = managerId;
         return this;
     }
 
-
     private Date createdOn;
-
-
     public Date getCreatedOn() {
         return this.createdOn;
     }
-
-
     public Employee setCreatedOn(Date createdOn) {
-
         this.createdOn = createdOn;
         return this;
     }
 
-
     private EmployeeApiRequestStatus apiRequestStatus;
-
-
     public EmployeeApiRequestStatus getApiRequestStatus() {
-
         return this.apiRequestStatus;
     }
-
-
     public Employee setApiRequestStatus(EmployeeApiRequestStatus apiRequestStatus) {
-
         if (this.apiRequestStatus != apiRequestStatus) {
-
             this.apiRequestStatus = apiRequestStatus;
         }
 
         return this;
     }
 
-
     private String apiRequestMessage;
-
-
     public String getApiRequestMessage() {
-
         return this.apiRequestMessage;
     }
-
-
     public Employee setApiRequestMessage(String apiRequestMessage) {
-
         if (!StringUtils.equalsIgnoreCase(this.apiRequestMessage, apiRequestMessage)) {
-
             this.apiRequestMessage = apiRequestMessage;
         }
 
         return this;
     }
-
 
     @Override
     public Employee loadFromJson(JSONObject rawJsonObject) {
@@ -230,7 +156,6 @@ public class Employee implements ConvertToJsonInterface, LoadFromJsonInterface<E
         return this;
     }
 
-
     @Override
     public JSONObject convertToJson() {
         JSONObject jsonObject = new JSONObject();
@@ -253,20 +178,17 @@ public class Employee implements ConvertToJsonInterface, LoadFromJsonInterface<E
         return jsonObject;
     }
 
-
     public Employee() {
-
+        this.active = false;
         this.id = new UUID(0, 0);
-        this.employeeId = StringUtils.EMPTY;
-        this.firstName = StringUtils.EMPTY;
+        this.createdOn = new Date();
+        this.managerId = new UUID(0, 0);
         this.lastName = StringUtils.EMPTY;
         this.password = StringUtils.EMPTY;
-        this.managerId = new UUID(0, 0);
-        this.classification = EmployeeClassification.NOT_DEFINED;
-        this.createdOn = new Date();
-        this.active = false;
+        this.firstName = StringUtils.EMPTY;
+        this.employeeId = StringUtils.EMPTY;
         this.apiRequestMessage = StringUtils.EMPTY;
         this.apiRequestStatus = EmployeeApiRequestStatus.OK;
+        this.classification = EmployeeClassification.NOT_DEFINED;
     }
-
 }

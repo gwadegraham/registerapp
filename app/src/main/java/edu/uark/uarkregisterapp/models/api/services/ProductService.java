@@ -16,7 +16,7 @@ import edu.uark.uarkregisterapp.models.api.interfaces.PathElementInterface;
 public class ProductService extends BaseRemoteService {
 	public Product getProduct(UUID productId) {
 		JSONObject rawJsonObject = this.requestSingle(
-			(new PathElementInterface[] { ProductApiMethod.PRODUCT, ApiLevel.ONE }), productId
+				(new PathElementInterface[] { ProductApiMethod.PRODUCT, ApiLevel.ONE }), productId
 		);
 
 		if (rawJsonObject != null) {
@@ -28,7 +28,7 @@ public class ProductService extends BaseRemoteService {
 
 	public Product getProductByLookupCode(String productLookupCode) {
 		JSONObject rawJsonObject = this.requestSingle(
-			(new PathElementInterface[] { ProductApiMethod.PRODUCT, ApiLevel.ONE, ProductApiMethod.BY_LOOKUP_CODE }), productLookupCode
+				(new PathElementInterface[] { ProductApiMethod.PRODUCT, ApiLevel.ONE, ProductApiMethod.BY_LOOKUP_CODE }), productLookupCode
 		);
 
 		if (rawJsonObject != null) {
@@ -41,7 +41,7 @@ public class ProductService extends BaseRemoteService {
 	public List<Product> getProducts() {
 		List<Product> activities;
 		JSONObject rawJsonObject = this.requestSingle(
-			(new PathElementInterface[] { ProductApiMethod.PRODUCT, ApiLevel.ONE, ProductApiMethod.PRODUCTS })
+				(new PathElementInterface[] { ProductApiMethod.PRODUCT, ApiLevel.ONE, ProductApiMethod.PRODUCTS })
 		);
 
 		if (rawJsonObject != null) {
@@ -55,7 +55,7 @@ public class ProductService extends BaseRemoteService {
 
 	public Product putProduct(Product product) {
 		JSONObject rawJsonObject = this.putSingle(
-			(new PathElementInterface[]{ ProductApiMethod.PRODUCT, ApiLevel.ONE }), product.convertToJson()
+				(new PathElementInterface[]{ ProductApiMethod.PRODUCT, ApiLevel.ONE }), product.convertToJson()
 		);
 
 		if (rawJsonObject != null) {
@@ -64,5 +64,4 @@ public class ProductService extends BaseRemoteService {
 			return new Product().setApiRequestStatus(ProductApiRequestStatus.UNKNOWN_ERROR);
 		}
 	}
-
 }
