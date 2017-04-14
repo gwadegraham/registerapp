@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
@@ -17,13 +18,16 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        //setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
 
-        //getting the parcelable object from the previous activity
-        this.employeeTransition = this.getIntent().getParcelableExtra("loginTag");
-        TextView textView = (TextView) findViewById(R.id.welcomeStatement);
-        String welcomeName = this.employeeTransition.getFirstName();
-        textView.setText("Welcome " + welcomeName + "! What would you like to do next?");
+        this.employeeTransition = this.getIntent().getParcelableExtra(this.getString(R.string.intent_extra_employee));
+    }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        this.getEmployeeWelcomeTextView().setText("Welcome " + this.employeeTransition.getFirstName() + " (" + this.employeeTransition.getEmployeeId() + ")!");
     }
 
     //when client clicks the "Start Transaction" button
@@ -74,6 +78,10 @@ public class HomeActivity extends AppCompatActivity {
                     }
                 });
         alertDialog.show();
+    }
+
+    private TextView getEmployeeWelcomeTextView() {
+        return (TextView)this.findViewById(R.id.welcomeStatement);
     }
 
     private EmployeeTransition employeeTransition;
