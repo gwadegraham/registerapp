@@ -17,18 +17,23 @@ public class StartTransactionLandingActivity extends AppCompatActivity {
 
     public void searchProductsButtonClick(View view) {
 
-        showAlertDialog();
+        //upon clicking the Search Products button, the client is sent to ProductsListingActivity
+        Intent i = new Intent(this, ProductsListingActivity.class);
+        startActivity(i);
     }
 
     public void transactionSummaryButtonClick(View view) {
 
-        showAlertDialog();
+        //upon clicking the Transaction Summary button, the client is sent to ViewTransactionSummary
+        Intent i = new Intent(this, ViewTransactionSummary.class);
+        startActivity(i);
     }
 
     public void backButtonClick (View view) {
 
         //upon clicking the back button, the client is sent to the previous activity screen
-        showAlertDialog();
+        //showAlertDialog();
+        finish();
 
     }
 
