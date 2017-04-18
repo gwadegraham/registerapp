@@ -53,7 +53,7 @@ public class ProductViewActivity extends AppCompatActivity {
 		super.onResume();
 
 		this.getProductLookupCodeEditText().setText(this.productTransition.getLookupCode());
-		this.getProductCountEditText().setText(String.format(Locale.getDefault(), "%d", this.productTransition.getCount()));
+		this.getProductCountEditText().setText(String.format(Locale.getDefault(), "%d", this.productTransition.getQuantity()));
 		this.getProductCreatedOnEditText().setText(
 			(new SimpleDateFormat("MM/dd/yyyy", Locale.US)).format(this.productTransition.getCreatedOn())
 		);
@@ -94,11 +94,11 @@ public class ProductViewActivity extends AppCompatActivity {
 				(new Product()).
 					setId(productTransition.getId()).
 					setLookupCode(this.lookupCode).
-					setCount(this.count)
+					setQuantity(this.quantity)
 			);
 
 			if (product.getApiRequestStatus() == ProductApiRequestStatus.OK) {
-				productTransition.setCount(this.count);
+				productTransition.setQuantity(this.quantity);
 				productTransition.setLookupCode(this.lookupCode);
 			}
 
@@ -131,12 +131,12 @@ public class ProductViewActivity extends AppCompatActivity {
 				show();
 		}
 
-		private int count;
+		private int quantity;
 		private String lookupCode;
 		private ProductViewActivity activity;
 
-		private SaveActivityTask(ProductViewActivity activity, String lookupCode, int count) {
-			this.count = count;
+		private SaveActivityTask(ProductViewActivity activity, String lookupCode, int quantity) {
+			this.quantity = quantity;
 			this.activity = activity;
 			this.lookupCode = lookupCode;
 		}

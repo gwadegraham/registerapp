@@ -42,7 +42,9 @@ public class HomeActivity extends AppCompatActivity {
     //when client clicks the "Create Employee" button
     public void createEmployeeButtonClick (View view) {
 
-        showAlertDialog();
+        //upon clicking the create employee button, the client is sent to create_employee
+        Intent i = new Intent(this, create_employee.class);
+        startActivity(i);
     }
 
     //when client clicks the "Sales Report: Product" button

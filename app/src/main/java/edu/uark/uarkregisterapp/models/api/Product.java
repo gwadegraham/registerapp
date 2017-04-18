@@ -35,12 +35,12 @@ public class Product implements ConvertToJsonInterface, LoadFromJsonInterface<Pr
 		return this;
 	}
 
-	private int count;
-	public int getCount() {
-		return this.count;
+	private int quantity;
+	public int getQuantity() {
+		return this.quantity;
 	}
-	public Product setCount(int count) {
-		this.count = count;
+	public Product setQuantity(int quantity) {
+		this.quantity = quantity;
 		return this;
 	}
 
@@ -85,7 +85,7 @@ public class Product implements ConvertToJsonInterface, LoadFromJsonInterface<Pr
 		}
 
 		this.lookupCode = rawJsonObject.optString(ProductFieldName.LOOKUP_CODE.getFieldName());
-		this.count = rawJsonObject.optInt(ProductFieldName.COUNT.getFieldName());
+		this.quantity = rawJsonObject.optInt(ProductFieldName.QUANTITY.getFieldName());
 
 		value = rawJsonObject.optString(ProductFieldName.CREATED_ON.getFieldName());
 		if (!StringUtils.isBlank(value)) {
@@ -113,7 +113,7 @@ public class Product implements ConvertToJsonInterface, LoadFromJsonInterface<Pr
 		try {
 			jsonObject.put(ProductFieldName.ID.getFieldName(), this.id.toString());
 			jsonObject.put(ProductFieldName.LOOKUP_CODE.getFieldName(), this.lookupCode);
-			jsonObject.put(ProductFieldName.COUNT.getFieldName(), this.count);
+			jsonObject.put(ProductFieldName.QUANTITY.getFieldName(), this.quantity);
 			jsonObject.put(ProductFieldName.CREATED_ON.getFieldName(), (new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS", Locale.US)).format(this.createdOn));
 			jsonObject.put(ProductFieldName.API_REQUEST_MESSAGE.getFieldName(), this.apiRequestMessage);
 			jsonObject.put(ProductFieldName.API_REQUEST_STATUS.getFieldName(), this.apiRequestStatus.name());
@@ -125,7 +125,7 @@ public class Product implements ConvertToJsonInterface, LoadFromJsonInterface<Pr
 	}
 
 	public Product() {
-		this.count = -1;
+		this.quantity = -1;
 		this.lookupCode = "";
 		this.id = new UUID(0, 0);
 		this.createdOn = new Date();
@@ -135,7 +135,7 @@ public class Product implements ConvertToJsonInterface, LoadFromJsonInterface<Pr
 
 	public Product(ProductTransition productTransition) {
 		this.id = productTransition.getId();
-		this.count = productTransition.getCount();
+		this.quantity = productTransition.getQuantity();
 		this.apiRequestMessage = StringUtils.EMPTY;
 		this.createdOn = productTransition.getCreatedOn();
 		this.apiRequestStatus = ProductApiRequestStatus.OK;
