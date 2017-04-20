@@ -1,15 +1,29 @@
 package edu.uark.uarkregisterapp;
 
+import edu.uark.uarkregisterapp.models.api.Employee;
+import edu.uark.uarkregisterapp.models.api.Product;
+import edu.uark.uarkregisterapp.models.api.Transaction;
+import edu.uark.uarkregisterapp.models.api.enums.TransactionApiRequestStatus;
+import edu.uark.uarkregisterapp.models.api.enums.ProductApiRequestStatus;
+import edu.uark.uarkregisterapp.models.api.services.EmployeeService;
+import edu.uark.uarkregisterapp.models.api.services.ProductService;
+import edu.uark.uarkregisterapp.models.api.services.TransactionService;
 import edu.uark.uarkregisterapp.models.transition.EmployeeTransition;
+import edu.uark.uarkregisterapp.models.transition.TransactionTransition;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -32,6 +46,12 @@ public class HomeActivity extends AppCompatActivity {
 
     //when client clicks the "Start Transaction" button
     public void startTransactionButtonClick (View view) {
+
+        this.savingTransactionAlert = new AlertDialog.Builder(this).
+                setMessage(R.string.alert_dialog_transaction_save).
+                create();
+
+        (new SaveActivityTask(this, "001", '3' )).execute();
 
         //upon clicking the start transaction button, the client is sent to StartTransactionLandingActivity
         Intent i = new Intent(this, StartTransactionLandingActivity.class);
@@ -87,5 +107,62 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private EmployeeTransition employeeTransition;
+
+    private class SaveActivityTask extends AsyncTask<Void, Void, Boolean> {
+        @Override
+        protected Boolean doInBackground(Void... params) {
+            Transaction transaction = (new TransactionService()).putProduct(
+                    (new Transaction()).
+                            setId(transactionTransition.getId()).
+                            setTotalPrice(this.totalPrice)
+            );
+
+            if (transaction.getApiRequestStatus() == TransactionApiRequestStatus.OK) {
+                transactionTransition.setTotalPrice(this.totalPrice);
+                transactionTransition.setRecordID(this.recordID);
+            }
+
+            return (transaction.getApiRequestStatus() == TransactionApiRequestStatus.OK);
+        }
+
+        @Override
+        protected void onPostExecute(Boolean successfulSave) {
+            String message;
+
+            savingTransactionAlert.dismiss();
+
+            if (successfulSave) {
+                message = getString(R.string.alert_dialog_product_save_success);
+            } else {
+                message = getString(R.string.alert_dialog_product_save_failure);
+            }
+
+            new AlertDialog.Builder(this.activity).
+                    setMessage(message).
+                    setPositiveButton(
+                            R.string.button_dismiss,
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.dismiss();
+                                }
+                            }
+                    ).
+                    create().
+                    show();
+        }
+
+        private int totalPrice;
+        private String recordID;
+        private HomeActivity activity;
+
+        private SaveActivityTask(HomeActivity activity, String recordID, int totalPrice) {
+            this.totalPrice = totalPrice;
+            this.activity = activity;
+            this.recordID = recordID;
+        }
+    }
+
+    private TransactionTransition transactionTransition;
+    private AlertDialog savingTransactionAlert;
 
 }
