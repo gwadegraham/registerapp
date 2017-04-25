@@ -51,10 +51,18 @@ public class HomeActivity extends AppCompatActivity {
                 setMessage(R.string.alert_dialog_transaction_save).
                 create();
 
-        (new SaveActivityTask(this, "001", '3' )).execute();
+        transactionTransition = new  TransactionTransition();
 
         //upon clicking the start transaction button, the client is sent to StartTransactionLandingActivity
         Intent i = new Intent(this, StartTransactionLandingActivity.class);
+
+        //putting TransactionTransition object as extra on intent
+        i.putExtra(
+                getString(R.string.intent_extra_transaction_transition),
+                transactionTransition
+        );
+
+        //starting next activity with intent
         startActivity(i);
 
     }
@@ -111,11 +119,7 @@ public class HomeActivity extends AppCompatActivity {
     private class SaveActivityTask extends AsyncTask<Void, Void, Boolean> {
         @Override
         protected Boolean doInBackground(Void... params) {
-            Transaction transaction = (new TransactionService()).putProduct(
-                    (new Transaction()).
-                            setId(transactionTransition.getId()).
-                            setTotalPrice(this.totalPrice)
-            );
+            Transaction transaction = (new TransactionService()).putProduct( ( new Transaction() ) );
 
             if (transaction.getApiRequestStatus() == TransactionApiRequestStatus.OK) {
                 transactionTransition.setTotalPrice(this.totalPrice);
@@ -132,9 +136,9 @@ public class HomeActivity extends AppCompatActivity {
             savingTransactionAlert.dismiss();
 
             if (successfulSave) {
-                message = getString(R.string.alert_dialog_product_save_success);
+                message = getString(R.string.alert_dialog_transaction_save_success);
             } else {
-                message = getString(R.string.alert_dialog_product_save_failure);
+                message = getString(R.string.alert_dialog_transaction_save_failure);
             }
 
             new AlertDialog.Builder(this.activity).

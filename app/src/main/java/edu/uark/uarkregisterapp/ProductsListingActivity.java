@@ -18,6 +18,7 @@ import edu.uark.uarkregisterapp.adapters.ProductListAdapter;
 import edu.uark.uarkregisterapp.models.api.Product;
 import edu.uark.uarkregisterapp.models.api.services.ProductService;
 import edu.uark.uarkregisterapp.models.transition.ProductTransition;
+import edu.uark.uarkregisterapp.models.transition.TransactionTransition;
 
 public class ProductsListingActivity extends AppCompatActivity {
 	@Override
@@ -25,6 +26,9 @@ public class ProductsListingActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_products_listing);
 		setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+
+		//getting the transactionTransition object from the previous intent
+		this.transactionTransition = this.getIntent().getParcelableExtra(this.getString(R.string.intent_extra_transaction_transition));
 
 		ActionBar actionBar = this.getSupportActionBar();
 		if (actionBar != null) {
@@ -35,6 +39,7 @@ public class ProductsListingActivity extends AppCompatActivity {
 		this.productListAdapter = new ProductListAdapter(this, this.products);
 
 		this.getProductsListView().setAdapter(this.productListAdapter);
+
 		this.getProductsListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -44,6 +49,13 @@ public class ProductsListingActivity extends AppCompatActivity {
 					getString(R.string.intent_extra_product),
 					new ProductTransition((Product) getProductsListView().getItemAtPosition(position))
 				);
+
+				//putting TransactionTransition object as extra on intent
+				intent.putExtra(
+						getString(R.string.intent_extra_transaction_transition),
+						transactionTransition
+				);
+
 
 				startActivity(intent);
 			}
@@ -87,4 +99,5 @@ public class ProductsListingActivity extends AppCompatActivity {
 	private List<Product> products;
 	private AlertDialog loadingProductsAlert;
 	private ProductListAdapter productListAdapter;
+	private TransactionTransition transactionTransition;
 }
