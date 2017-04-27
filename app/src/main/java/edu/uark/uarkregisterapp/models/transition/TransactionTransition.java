@@ -6,6 +6,7 @@ import android.os.Parcelable;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.UUID;
 
 import edu.uark.uarkregisterapp.commands.converters.ByteToUUIDConverterCommand;
@@ -77,6 +78,28 @@ public class TransactionTransition implements Parcelable {
         return this;
     }
 
+    //help from Dr. Phillips
+    private LinkedList<ProductTransition> products;
+    public LinkedList<ProductTransition> getProducts() {
+        return this.products;
+    }
+    public TransactionTransition setProducts(LinkedList<ProductTransition> products) {
+        this.products = products;
+        return this;
+    }
+    public TransactionTransition addProduct(ProductTransition product) {
+        if (this.products == null) {
+            this.products = new LinkedList<>();
+        }
+
+        this.products.addLast(product);
+        return this;
+    }
+
+
+
+
+
     @Override
     public void writeToParcel(Parcel destination, int flags) {
         destination.writeByteArray((new UUIDToByteConverterCommand()).setValueToConvert(this.id).execute());
@@ -86,6 +109,12 @@ public class TransactionTransition implements Parcelable {
         destination.writeString(this.transactionType);
         destination.writeString(this.referenceID);
         destination.writeLong(this.createdOn.getTime());
+
+        //help from Dr. Phillips
+        destination.writeInt((this.products != null) ? this.products.size() : 0);
+        for (ProductTransition productTransition : this.products) {
+            destination.writeParcelable(productTransition, flags);
+        }
     }
 
     @Override
@@ -133,5 +162,13 @@ public class TransactionTransition implements Parcelable {
 
         this.createdOn = new Date();
         this.createdOn.setTime(TransactionTransitionParcel.readLong());
+
+        //help from Dr. Phillips
+        int linkedListSize = TransactionTransitionParcel.readInt();
+        this.products = new LinkedList<>();
+        for (int i = 0; i < linkedListSize; i++) {
+            ProductTransition pt = TransactionTransitionParcel.readParcelable(ProductTransition.class.getClassLoader());
+            this.products.addLast(pt);
+        }
     }
 }

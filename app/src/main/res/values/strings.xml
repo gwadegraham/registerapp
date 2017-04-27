@@ -36,6 +36,7 @@
     <string name="alert_dialog_employee_create_failed">The employee could not be created. Please try again.</string>
     <string name="alert_dialog_products_loading">Loading Products</string>
     <string name="alert_dialog_product_save">Saving Product...</string>
+    <string name="alert_dialog_cart_save">Saving Cart...</string>
     <string name="alert_dialog_product_save_success">The product was successfully saved.</string>
     <string name="alert_dialog_transaction_save">Saving Transaction...</string>
     <string name="alert_dialog_transaction_save_success">The transaction was successfully saved.</string>

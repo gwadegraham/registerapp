@@ -20,6 +20,7 @@ import edu.uark.uarkregisterapp.models.api.Product;
 import edu.uark.uarkregisterapp.models.api.enums.ProductApiRequestStatus;
 import edu.uark.uarkregisterapp.models.api.services.ProductService;
 import edu.uark.uarkregisterapp.models.transition.ProductTransition;
+import edu.uark.uarkregisterapp.models.transition.TransactionTransition;
 
 public class ProductViewActivity extends AppCompatActivity {
 	@Override
@@ -34,6 +35,8 @@ public class ProductViewActivity extends AppCompatActivity {
 		}
 
 		this.productTransition = this.getIntent().getParcelableExtra(this.getString(R.string.intent_extra_product));
+		this.transactionTransition = this.getIntent().getParcelableExtra(this.getString(R.string.intent_extra_transaction_transition));
+
 	}
 
 	@Override
@@ -73,6 +76,11 @@ public class ProductViewActivity extends AppCompatActivity {
 			this.getProductLookupCodeEditText().getText().toString(),
 			Integer.parseInt(this.getProductCountEditText().getText().toString())
 		)).execute();
+	}
+
+	public void addToCartOnClick(View view) {
+
+		showAlertDialog();
 	}
 
 	private EditText getProductLookupCodeEditText() {
@@ -184,6 +192,23 @@ public class ProductViewActivity extends AppCompatActivity {
 		return inputIsValid;
 	}
 
+	//function to launch an alert dialog box
+	public void showAlertDialog () {
+
+		AlertDialog alertDialog = new AlertDialog.Builder(ProductViewActivity.this).create();
+		alertDialog.setTitle("Alert");
+		alertDialog.setMessage("Functionality not yet implemented");
+		alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
+						dialog.dismiss();
+					}
+				});
+		alertDialog.show();
+	}
+
 	private AlertDialog savingProductAlert;
+	private AlertDialog savingCartAlert;
 	private ProductTransition productTransition;
+	private TransactionTransition transactionTransition;
 }

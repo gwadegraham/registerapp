@@ -76,4 +76,12 @@
         android:layout_alignParentBottom="true"
         style="?android:attr/buttonBarButtonStyle"/>
 
+    <Button
+        android:id="@+id/addToCart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/button_activity_edit_save"
+        android:text="Add To Cart"
+        android:onClick="addToCartOnClick"/>
+
 </RelativeLayout>
