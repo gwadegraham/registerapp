@@ -140,6 +140,7 @@ public class TransactionTransition implements Parcelable {
         this.cashierID = StringUtils.EMPTY;
         this.referenceID = StringUtils.EMPTY;
         this.transactionType = StringUtils.EMPTY;
+        this.products = new LinkedList<>();
     }
 
     public TransactionTransition(Transaction transaction) {
@@ -150,6 +151,7 @@ public class TransactionTransition implements Parcelable {
         this.cashierID = transaction.getCashierID();
         this.referenceID = transaction.getReferenceID();
         this.transactionType = transaction.getTransactionType();
+        this.products = new LinkedList<>();
     }
 
     public TransactionTransition(Parcel TransactionTransitionParcel) {

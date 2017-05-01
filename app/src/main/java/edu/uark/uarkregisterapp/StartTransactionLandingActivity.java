@@ -7,18 +7,29 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import edu.uark.uarkregisterapp.models.transition.TransactionTransition;
+
 public class StartTransactionLandingActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_transaction_landing);
+
+        this.transactionTransition = this.getIntent().getParcelableExtra(this.getString(R.string.intent_extra_transaction_transition));
     }
 
     public void searchProductsButtonClick(View view) {
 
         //upon clicking the Search Products button, the client is sent to ProductsListingActivity
         Intent i = new Intent(this, ProductsListingActivity.class);
+
+        //putting TransactionTransition object as extra on intent
+        i.putExtra(
+                getString(R.string.intent_extra_transaction_transition),
+                transactionTransition
+        );
+
         startActivity(i);
     }
 
@@ -50,4 +61,6 @@ public class StartTransactionLandingActivity extends AppCompatActivity {
                 });
         alertDialog.show();
     }
+
+    private TransactionTransition transactionTransition;
 }

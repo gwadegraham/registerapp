@@ -80,7 +80,7 @@ public class ProductViewActivity extends AppCompatActivity {
 
 	public void addToCartOnClick(View view) {
 
-		showAlertDialog();
+		this.transactionTransition.addProduct(this.productTransition);
 	}
 
 	private EditText getProductLookupCodeEditText() {
