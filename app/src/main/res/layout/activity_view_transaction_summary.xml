@@ -11,28 +11,35 @@
         android:id="@+id/summaryTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Transaction Summary"
-        android:textSize="24sp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="37dp"/>
+        android:layout_marginTop="37dp"
+        android:text="Transaction Summary"
+        android:textAllCaps="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textStyle="bold"/>
 
     <TextView
-        android:id="@+id/totalPrice"
-        android:text="The total cost of items in the cart is: "
+        android:id="@+id/totalCost"
         android:layout_width="379dp"
         android:layout_height="327dp"
-        android:layout_alignBottom="@+id/checkoutButton"
-        android:layout_centerHorizontal="true"/>
+        android:text="Total Cart Cost: $"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/totalCount"
+        android:layout_alignStart="@+id/totalCount"/>
 
     <TextView
         android:id="@+id/totalCount"
-        android:text="The total number of products in your cart: "
         android:layout_width="379dp"
         android:layout_height="327dp"
-        android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
+        android:text="Number of Products in Cart: "
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="20dp"
+        android:layout_alignBottom="@+id/checkoutButton"
+        android:layout_centerHorizontal="true"/>
 
     <Button
         android:id="@+id/checkoutButton"

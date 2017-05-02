@@ -22,54 +22,23 @@ public class ViewTransactionSummary extends AppCompatActivity {
         //getting the transactionTransition object from the previous intent
         this.transactionTransition = this.getIntent().getParcelableExtra(this.getString(R.string.intent_extra_transaction_transition));
 
-        productLinkedList = transactionTransition.getProducts();
-
-        //productCounter = productLinkedList.size();
-
         for (ProductTransition productTransition : transactionTransition.getProducts()) {
             productCounter++;
+            productTotalCost = productTotalCost + productTransition.getCost();
         }
 
-        this.getTotalCountTextView().setText("The total number of products in your cart: " + productCounter);
+        this.getTotalCountTextView().setText("Number of Products in Cart: " + productCounter);
+        this.getTotalCostTextView().setText("Total Cart Cost: $" + productTotalCost);
 
     }
 
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//
-//        //getting the transactionTransition object from the previous intent
-//        this.transactionTransition = this.getIntent().getParcelableExtra(this.getString(R.string.intent_extra_transaction_transition));
-//
-//        productLinkedList = transactionTransition.getProducts();
-//
-//        productCounter = productLinkedList.size();
-//
-//        for (ProductTransition productTransition : transactionTransition.getProducts()) {
-//            //productCounter = productCounter + 1;
-//        }
-//
-//        this.getTotalCountTextView().setText("The total number of products in your cart: " + productCounter);    }
-//
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//
-//        //getting the transactionTransition object from the previous intent
-//        this.transactionTransition = this.getIntent().getParcelableExtra(this.getString(R.string.intent_extra_transaction_transition));
-//
-//        productLinkedList = transactionTransition.getProducts();
-//
-//        productCounter = productLinkedList.size();
-//
-//        for (ProductTransition productTransition : transactionTransition.getProducts()) {
-//            //productCounter = productCounter + 1;
-//        }
-//
-//        this.getTotalCountTextView().setText("The total number of products in your cart: " + productCounter);    }
 
     private TextView getTotalCountTextView() {
         return (TextView)this.findViewById(R.id.totalCount);
+    }
+
+    private TextView getTotalCostTextView() {
+        return (TextView)this.findViewById(R.id.totalCost);
     }
 
     public void checkoutButtonClick(View view) {
@@ -92,6 +61,6 @@ public class ViewTransactionSummary extends AppCompatActivity {
     }
 
     private TransactionTransition transactionTransition;
-    private LinkedList productLinkedList;
     private int productCounter;
+    private int productTotalCost;
 }

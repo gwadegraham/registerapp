@@ -19,9 +19,11 @@
     <string name="text_view_login_employee_id">Employee ID</string>
     <string name="text_view_login_password">Password</string>
     <string name="text_view_products_count">0</string>
+    <string name="text_view_products_cost">0.00</string>
     <string name="text_view_products_created_on">01/01/1970</string>
     <string name="text_view_label_products_lookup_code">Lookup Code:</string>
     <string name="text_view_label_products_count">Count:</string>
+    <string name="text_view_label_products_cost">Cost:</string>
     <string name="text_view_label_products_created_on">Created On:</string>
     <string name="edit_text_hint_employee_create_first_name">First name</string>
     <string name="edit_text_hint_employee_create_last_name">Last name</string>
@@ -49,6 +51,7 @@
     <string name="alert_dialog_functionality_not_available">This functionality is not yet available.</string>
     <string name="validation_product_lookup_code">Product lookup code may not be empty.</string>
     <string name="validation_product_count">Product count must be a number and may not be negative.</string>
+    <string name="validation_product_cost">Product cost must be a number and may not be negative.</string>
     <string name="intent_extra_employee">intent_extra_employee</string>
     <string name="intent_extra_product">intent_extra_product</string>
     <string name="intent_extra_transaction_transition">intent_extra_transaction_transition</string>

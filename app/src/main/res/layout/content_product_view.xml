@@ -47,10 +47,27 @@
         android:layout_marginTop="5dp"/>
 
     <TextView
+        android:id="@+id/text_view_product_cost"
+        android:text="@string/text_view_label_products_cost"
+        android:layout_below="@+id/edit_text_product_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"/>
+
+    <EditText
+        android:id="@+id/edit_text_product_cost"
+        android:hint="@string/text_view_products_cost"
+        android:inputType="number"
+        android:layout_below="@+id/text_view_product_cost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"/>
+
+    <TextView
         android:id="@+id/text_view_product_created_on"
         android:text="@string/text_view_label_products_created_on"
         android:layout_width="wrap_content"
-        android:layout_below="@+id/edit_text_product_count"
+        android:layout_below="@+id/edit_text_product_cost"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"/>
 

@@ -42,24 +42,13 @@ public class ProductViewActivity extends AppCompatActivity {
 
 	}
 
-//	@Override
-//	public boolean onOptionsItemSelected(MenuItem item) {
-//		switch (item.getItemId()) {
-//			case android.R.id.home:  // Respond to the action bar's Up/Home button
-//				this.finish();
-//
-//				return true;
-//		}
-//
-//		return super.onOptionsItemSelected(item);
-//	}
-
 	@Override
 	protected void onResume() {
 		super.onResume();
 
 		this.getProductLookupCodeEditText().setText(this.productTransition.getLookupCode());
 		this.getProductCountEditText().setText(String.format(Locale.getDefault(), "%d", this.productTransition.getQuantity()));
+		this.getProductCostEditText().setText(String.format(Locale.getDefault(), "%d", this.productTransition.getCost()));
 		this.getProductCreatedOnEditText().setText(
 			(new SimpleDateFormat("MM/dd/yyyy", Locale.US)).format(this.productTransition.getCreatedOn())
 		);
@@ -99,13 +88,16 @@ public class ProductViewActivity extends AppCompatActivity {
 		(new SaveActivityTask(
 			this,
 			this.getProductLookupCodeEditText().getText().toString(),
-			Integer.parseInt(this.getProductCountEditText().getText().toString())
+			Integer.parseInt(this.getProductCountEditText().getText().toString()),
+				Integer.parseInt(this.getProductCostEditText().getText().toString())
 		)).execute();
 	}
 
 	public void addToCartOnClick(View view) {
 
 		this.transactionTransition.addProduct(this.productTransition);
+
+		showAlertDialog();
 
 	}
 
@@ -115,6 +107,10 @@ public class ProductViewActivity extends AppCompatActivity {
 
 	private EditText getProductCountEditText() {
 		return (EditText) this.findViewById(R.id.edit_text_product_count);
+	}
+
+	private EditText getProductCostEditText() {
+		return (EditText) this.findViewById(R.id.edit_text_product_cost);
 	}
 
 	private EditText getProductCreatedOnEditText() {
@@ -128,12 +124,14 @@ public class ProductViewActivity extends AppCompatActivity {
 				(new Product()).
 					setId(productTransition.getId()).
 					setLookupCode(this.lookupCode).
-					setQuantity(this.quantity)
+					setQuantity(this.quantity).
+					setCost(this.cost)
 			);
 
 			if (product.getApiRequestStatus() == ProductApiRequestStatus.OK) {
 				productTransition.setQuantity(this.quantity);
 				productTransition.setLookupCode(this.lookupCode);
+				productTransition.setCost(this.cost);
 			}
 
 			return (product.getApiRequestStatus() == ProductApiRequestStatus.OK);
@@ -166,13 +164,15 @@ public class ProductViewActivity extends AppCompatActivity {
 		}
 
 		private int quantity;
+		private int cost;
 		private String lookupCode;
 		private ProductViewActivity activity;
 
-		private SaveActivityTask(ProductViewActivity activity, String lookupCode, int quantity) {
+		private SaveActivityTask(ProductViewActivity activity, String lookupCode, int quantity, int cost) {
 			this.quantity = quantity;
 			this.activity = activity;
 			this.lookupCode = lookupCode;
+			this.cost = cost;
 		}
 	}
 
@@ -200,6 +200,16 @@ public class ProductViewActivity extends AppCompatActivity {
 			inputIsValid = false;
 		}
 
+		try {
+			if (Integer.parseInt(this.getProductCostEditText().getText().toString()) < 0) {
+				validationMessage = this.getString(R.string.validation_product_cost);
+				inputIsValid = false;
+			}
+		} catch (NumberFormatException nfe) {
+			validationMessage = this.getString(R.string.validation_product_cost);
+			inputIsValid = false;
+		}
+
 		if (!inputIsValid) {
 			new AlertDialog.Builder(this).
 				setMessage(validationMessage).
@@ -218,12 +228,11 @@ public class ProductViewActivity extends AppCompatActivity {
 		return inputIsValid;
 	}
 
-	//function to launch an alert dialog box
 	public void showAlertDialog () {
 
 		AlertDialog alertDialog = new AlertDialog.Builder(ProductViewActivity.this).create();
-		alertDialog.setTitle("Alert");
-		alertDialog.setMessage("Functionality not yet implemented");
+		alertDialog.setTitle("Success!");
+		alertDialog.setMessage("Item added to cart.");
 		alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
 				new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
@@ -234,7 +243,6 @@ public class ProductViewActivity extends AppCompatActivity {
 	}
 
 	private AlertDialog savingProductAlert;
-	private AlertDialog savingCartAlert;
 	private ProductTransition productTransition;
 	private TransactionTransition transactionTransition;
 }

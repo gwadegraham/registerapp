@@ -53,6 +53,15 @@ public class Product implements ConvertToJsonInterface, LoadFromJsonInterface<Pr
 		return this;
 	}
 
+	private int cost;
+	public int getCost() {
+		return this.cost;
+	}
+	public Product setCost(int cost) {
+		this.cost = cost;
+		return this;
+	}
+
 	private ProductApiRequestStatus apiRequestStatus;
 	public ProductApiRequestStatus getApiRequestStatus() {
 		return this.apiRequestStatus;
@@ -86,6 +95,8 @@ public class Product implements ConvertToJsonInterface, LoadFromJsonInterface<Pr
 
 		this.lookupCode = rawJsonObject.optString(ProductFieldName.LOOKUP_CODE.getFieldName());
 		this.quantity = rawJsonObject.optInt(ProductFieldName.QUANTITY.getFieldName());
+		this.cost = rawJsonObject.optInt(ProductFieldName.COST.getFieldName());
+
 
 		value = rawJsonObject.optString(ProductFieldName.CREATED_ON.getFieldName());
 		if (!StringUtils.isBlank(value)) {
@@ -114,6 +125,7 @@ public class Product implements ConvertToJsonInterface, LoadFromJsonInterface<Pr
 			jsonObject.put(ProductFieldName.ID.getFieldName(), this.id.toString());
 			jsonObject.put(ProductFieldName.LOOKUP_CODE.getFieldName(), this.lookupCode);
 			jsonObject.put(ProductFieldName.QUANTITY.getFieldName(), this.quantity);
+			jsonObject.put(ProductFieldName.COST.getFieldName(), this.cost);
 			jsonObject.put(ProductFieldName.CREATED_ON.getFieldName(), (new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS", Locale.US)).format(this.createdOn));
 			jsonObject.put(ProductFieldName.API_REQUEST_MESSAGE.getFieldName(), this.apiRequestMessage);
 			jsonObject.put(ProductFieldName.API_REQUEST_STATUS.getFieldName(), this.apiRequestStatus.name());
@@ -131,6 +143,7 @@ public class Product implements ConvertToJsonInterface, LoadFromJsonInterface<Pr
 		this.createdOn = new Date();
 		this.apiRequestMessage = StringUtils.EMPTY;
 		this.apiRequestStatus = ProductApiRequestStatus.OK;
+		this.cost = 0;
 	}
 
 	public Product(ProductTransition productTransition) {
@@ -140,5 +153,6 @@ public class Product implements ConvertToJsonInterface, LoadFromJsonInterface<Pr
 		this.createdOn = productTransition.getCreatedOn();
 		this.apiRequestStatus = ProductApiRequestStatus.OK;
 		this.lookupCode = productTransition.getLookupCode();
+		this.cost = productTransition.getCost();
 	}
 }
