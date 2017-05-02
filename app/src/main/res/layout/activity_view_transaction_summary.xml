@@ -17,11 +17,22 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="37dp"/>
 
-    <ListView
-        android:id="@+id/transactionDetails"
+    <TextView
+        android:id="@+id/totalPrice"
+        android:text="The total cost of items in the cart is: "
         android:layout_width="379dp"
         android:layout_height="327dp"
-        android:layout_below="@+id/summaryTitle"/>
+        android:layout_alignBottom="@+id/checkoutButton"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/totalCount"
+        android:text="The total number of products in your cart: "
+        android:layout_width="379dp"
+        android:layout_height="327dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
 
     <Button
         android:id="@+id/checkoutButton"

@@ -144,24 +144,26 @@ public class TransactionTransition implements Parcelable {
     }
 
     public TransactionTransition(Transaction transaction) {
-        this.totalPrice = transaction.getTotalPrice();
+
         this.id = transaction.getId();
         this.createdOn = transaction.getCreatedOn();
         this.recordID = transaction.getRecordID();
         this.cashierID = transaction.getCashierID();
-        this.referenceID = transaction.getReferenceID();
+        this.totalPrice = transaction.getTotalPrice();
         this.transactionType = transaction.getTransactionType();
+        this.referenceID = transaction.getReferenceID();
         this.products = new LinkedList<>();
     }
 
     public TransactionTransition(Parcel TransactionTransitionParcel) {
-        this.totalPrice = TransactionTransitionParcel.readInt();
+
         this.id = (new ByteToUUIDConverterCommand()).setValueToConvert(TransactionTransitionParcel.createByteArray()).execute();
         this.recordID = TransactionTransitionParcel.readString();
         this.cashierID = TransactionTransitionParcel.readString();
-        this.referenceID = TransactionTransitionParcel.readString();
-        this.transactionType = TransactionTransitionParcel.readString();
+        this.totalPrice = TransactionTransitionParcel.readInt();
 
+        this.transactionType = TransactionTransitionParcel.readString();
+        this.referenceID = TransactionTransitionParcel.readString();
         this.createdOn = new Date();
         this.createdOn.setTime(TransactionTransitionParcel.readLong());
 

@@ -28,7 +28,11 @@
         <activity
             android:name=".ProductViewActivity"
             android:label="@string/title_activity_product_view"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar" >
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="edu.uark.uarkregisterapp.ProductsListingActivity" />
+        </activity>
         <activity
             android:name=".HomeActivity"
             android:label="Employee Home Screen" />

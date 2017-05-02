@@ -1,8 +1,11 @@
 package edu.uark.uarkregisterapp;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
+import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -39,17 +42,17 @@ public class ProductViewActivity extends AppCompatActivity {
 
 	}
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-			case android.R.id.home:  // Respond to the action bar's Up/Home button
-				this.finish();
-
-				return true;
-		}
-
-		return super.onOptionsItemSelected(item);
-	}
+//	@Override
+//	public boolean onOptionsItemSelected(MenuItem item) {
+//		switch (item.getItemId()) {
+//			case android.R.id.home:  // Respond to the action bar's Up/Home button
+//				this.finish();
+//
+//				return true;
+//		}
+//
+//		return super.onOptionsItemSelected(item);
+//	}
 
 	@Override
 	protected void onResume() {
@@ -60,6 +63,28 @@ public class ProductViewActivity extends AppCompatActivity {
 		this.getProductCreatedOnEditText().setText(
 			(new SimpleDateFormat("MM/dd/yyyy", Locale.US)).format(this.productTransition.getCreatedOn())
 		);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+			case android.R.id.home:  // Respond to the action bar's Up/Home button
+				Intent upIntent = NavUtils.getParentActivityIntent(this);
+
+                upIntent.putExtra(getString(R.string.intent_extra_transaction_transition), this.transactionTransition);
+
+				if (NavUtils.shouldUpRecreateTask(this, upIntent)) {
+					TaskStackBuilder.create(this).
+							addNextIntentWithParentStack(upIntent).
+							startActivities();
+				} else {
+					NavUtils.navigateUpTo(this, upIntent);
+				}
+
+				return true;
+		}
+
+		return super.onOptionsItemSelected(item);
 	}
 
 	public void saveButtonOnClick(View view) {
@@ -81,6 +106,7 @@ public class ProductViewActivity extends AppCompatActivity {
 	public void addToCartOnClick(View view) {
 
 		this.transactionTransition.addProduct(this.productTransition);
+
 	}
 
 	private EditText getProductLookupCodeEditText() {

@@ -16,6 +16,7 @@ public class StartTransactionLandingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_transaction_landing);
 
+        //getting the transactionTransition object from the previous intent
         this.transactionTransition = this.getIntent().getParcelableExtra(this.getString(R.string.intent_extra_transaction_transition));
     }
 
@@ -37,6 +38,13 @@ public class StartTransactionLandingActivity extends AppCompatActivity {
 
         //upon clicking the Transaction Summary button, the client is sent to ViewTransactionSummary
         Intent i = new Intent(this, ViewTransactionSummary.class);
+
+        //putting TransactionTransition object as extra on intent
+        i.putExtra(
+                getString(R.string.intent_extra_transaction_transition),
+                transactionTransition
+        );
+
         startActivity(i);
     }
 
